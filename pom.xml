@@ -43,7 +43,7 @@
 		<junit.version>4.11</junit.version>
 		<bc.version>1.50</bc.version>
         <mysql.connector.version>5.1.30</mysql.connector.version>
-        <hibernate.version>4.2.11.Final</hibernate.version>
+        <hibernate.version>4.3.0.Final</hibernate.version>
         <dbcp.version>1.4</dbcp.version>
        <!-- <server.dir>/Users/pk/Documents/projects/GoldenBrideChat/server</server.dir>-->
 	</properties>
@@ -119,29 +119,49 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
-                    <packagingExcludes>WEB-INF/lib/a*.jar,
-                        WEB-INF/lib/b*.jar,
-                        WEB-INF/lib/e*.jar,
-                        WEB-INF/lib/g*.jar,
-                        WEB-INF/lib/h*.jar,
-                        WEB-INF/lib/i*.jar,
-                        WEB-INF/lib/ja*.jar,
-                        WEB-INF/lib/jb*.jar,
-                        WEB-INF/lib/jc*.jar,
-                        WEB-INF/lib/jr*.jar,
-                        WEB-INF/lib/ju*.jar,
-                        WEB-INF/lib/jy*.jar,
+                    <packagingExcludes>
+                        WEB-INF/lib/antlr*.jar,
+                        WEB-INF/lib/aopalliance-*.jar,
+                        WEB-INF/lib/asm-*.jar,
+                        WEB-INF/lib/aspectjrt-*.jar,
+                        WEB-INF/lib/bcprov-jdk15on-*.jar,
+                        WEB-INF/lib/c3p0-*.jar,
+                        WEB-INF/lib/cglib-nodep-*.jar,
+                        WEB-INF/lib/commons-beanutils-*.jar,
+                        WEB-INF/lib/commons-codec-*.jar,
+                        WEB-INF/lib/commons-collections-*.jar,
+                        WEB-INF/lib/commons-daemon-*.jar,
+                        WEB-INF/lib/commons-lang3-*.jar,
+                        WEB-INF/lib/commons-pool-*.jar,
+                        WEB-INF/lib/ehcache-core-*.jar,
+                        WEB-INF/lib/groovy-*.jar,
+                        WEB-INF/lib/httpclient-*.jar,
+                        WEB-INF/lib/httpcore-*.jar,
+                        WEB-INF/lib/isoparser-*.jar,
+                        WEB-INF/lib/jaudiotagger-*.jar,
+                        WEB-INF/lib/javassist-*.jar,
+                        WEB-INF/lib/jcl-over-slf4j-*.jar,
+                        WEB-INF/lib/jruby-*.jar,
+                        WEB-INF/lib/jul-to-slf4j-*.jar,
+                        WEB-INF/lib/jython-standalone-*.jar,
+                        WEB-INF/lib/log4j-over-slf4j-*.jar,
+                        WEB-INF/lib/logback-*.jar,
+                        WEB-INF/lib/mina-*.jar,
+                        WEB-INF/lib/ognl-*.jar,
+                        WEB-INF/lib/quartz-*.jar,
                         WEB-INF/lib/red5-*.jar,
-                        WEB-INF/lib/q*.jar,
-                        WEB-INF/lib/lo*.jar,
-                        WEB-INF/lib/mina*.jar,
-                        WEB-INF/lib/s*.jar,
-                        WEB-INF/lib/x*.jar
+                        WEB-INF/lib/slf4j-*.jar,
+                        WEB-INF/lib/xercesImpl-*.jar,
+                        WEB-INF/lib/xml-apis-*.jar,
+                        WEB-INF/lib/spring-aop-*.jar,
+                        WEB-INF/lib/spring-beans-*.jar,
+                        WEB-INF/lib/spring-context-*.jar,
+                        WEB-INF/lib/spring-core-*.jar,
+                        WEB-INF/lib/spring-expression-*.jar,
+                        WEB-INF/lib/spring-web-*.jar,
+                        WEB-INF/lib/stringtemplate-*.jar
                     </packagingExcludes>
 
-                    <packagingExcludes>
-                        WEB-INF/lib/*
-                    </packagingExcludes>
                     <outputDirectory>${server.dir}/webapps</outputDirectory>
                 </configuration>
 			</plugin>
@@ -358,7 +378,34 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			<dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context-support</artifactId>
 				<version>${spring.version}</version>
@@ -371,6 +418,32 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-jpa</artifactId>
+                <version>${spring.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
             <!-- ORM integration, e.g Hibernate -->
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -379,13 +452,14 @@
                 <type>jar</type>
                 <scope>compile</scope>
             </dependency>
+
             <!-- database pool -->
             <dependency>
                 <groupId>commons-dbcp</groupId>
                 <artifactId>commons-dbcp</artifactId>
                 <version>${dbcp.version}</version>
                 <type>jar</type>
-                <scope>runtime</scope>
+                <scope>import</scope>
             </dependency>
             <!-- MySql Driver -->
             <dependency>
@@ -398,7 +472,21 @@
             <!-- Hibernate ORM -->
             <dependency>
                 <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>${hibernate.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator-annotation-processor</artifactId>
                 <version>${hibernate.version}</version>
                 <type>jar</type>
                 <scope>compile</scope>
@@ -460,6 +548,21 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
         <!-- ORM integration, e.g Hibernate -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -487,6 +590,27 @@
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
 
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>1.7.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator-annotation-processor</artifactId>
+            <version>${hibernate.version}</version>
         </dependency>
 
 	</dependencies>
