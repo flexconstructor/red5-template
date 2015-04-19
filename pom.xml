@@ -42,7 +42,7 @@
 		<logback.version>1.0.13</logback.version>
 		<junit.version>4.11</junit.version>
 		<bc.version>1.50</bc.version>
-        <server.dir>/Users/pk/Documents/projects/GoldenBrideChat/server</server.dir>
+       <!-- <server.dir>/Users/pk/Documents/projects/GoldenBrideChat/server</server.dir>-->
 	</properties>
 	<build>
 		<pluginManagement>
@@ -182,6 +182,26 @@
                 </goals>
             </plugin>
             <!-- end-->
+            <!-- maven properties plugin-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0-alpha-2</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>${basedir}/dev.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- end maven properties plugin-->
 		</plugins>
 		<resources>
 			<resource>
