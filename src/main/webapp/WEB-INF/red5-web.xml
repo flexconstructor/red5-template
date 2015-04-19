@@ -24,5 +24,5 @@
 		<property name="virtualHosts" value="${webapp.virtualHosts}" />
 	</bean>
 
-    <bean id="web.handler" class="org.red5.demos.chat.Application"/>
+    <bean id="web.handler" class="ru.flexconstructor.red5template.Application"/>
 </beans>
