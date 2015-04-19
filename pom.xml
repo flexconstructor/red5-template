@@ -119,8 +119,29 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
-					<packagingIncludes>*.html,WEB-INF/**,WEB-INF/lib/json-smart-*.jar</packagingIncludes>
-					<packagingExcludes>WEB-INF/lib/*</packagingExcludes>
+                    <packagingExcludes>WEB-INF/lib/a*.jar,
+                        WEB-INF/lib/b*.jar,
+                        WEB-INF/lib/e*.jar,
+                        WEB-INF/lib/g*.jar,
+                        WEB-INF/lib/h*.jar,
+                        WEB-INF/lib/i*.jar,
+                        WEB-INF/lib/ja*.jar,
+                        WEB-INF/lib/jb*.jar,
+                        WEB-INF/lib/jc*.jar,
+                        WEB-INF/lib/jr*.jar,
+                        WEB-INF/lib/ju*.jar,
+                        WEB-INF/lib/jy*.jar,
+                        WEB-INF/lib/red5-*.jar,
+                        WEB-INF/lib/q*.jar,
+                        WEB-INF/lib/lo*.jar,
+                        WEB-INF/lib/mina*.jar,
+                        WEB-INF/lib/s*.jar,
+                        WEB-INF/lib/x*.jar
+                    </packagingExcludes>
+
+                    <packagingExcludes>
+                        WEB-INF/lib/*
+                    </packagingExcludes>
                     <outputDirectory>${server.dir}/webapps</outputDirectory>
                 </configuration>
 			</plugin>
@@ -364,7 +385,7 @@
                 <artifactId>commons-dbcp</artifactId>
                 <version>${dbcp.version}</version>
                 <type>jar</type>
-                <scope>compile</scope>
+                <scope>runtime</scope>
             </dependency>
             <!-- MySql Driver -->
             <dependency>
@@ -452,7 +473,6 @@
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
             <version>${dbcp.version}</version>
-
         </dependency>
         <!-- MySql Driver -->
         <dependency>
