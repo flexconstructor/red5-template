@@ -12,3 +12,7 @@ target/
 Thumbs.db
 build.sh
 log/
+.idea/
+
+.settings
+.idea

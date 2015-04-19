@@ -42,6 +42,7 @@
 		<logback.version>1.0.13</logback.version>
 		<junit.version>4.11</junit.version>
 		<bc.version>1.50</bc.version>
+        <server.dir>/Users/pk/Documents/projects/GoldenBrideChat/server</server.dir>
 	</properties>
 	<build>
 		<pluginManagement>
@@ -117,7 +118,8 @@
 				<configuration>
 					<packagingIncludes>*.html,WEB-INF/**,WEB-INF/lib/json-smart-*.jar</packagingIncludes>
 					<packagingExcludes>WEB-INF/lib/a*.jar,WEB-INF/lib/b*.jar,WEB-INF/lib/c*.jar,WEB-INF/lib/e*.jar,WEB-INF/lib/g*.jar,WEB-INF/lib/h*.jar,WEB-INF/lib/i*.jar,WEB-INF/lib/ja*.jar,WEB-INF/lib/jb*.jar,WEB-INF/lib/jc*.jar,WEB-INF/lib/jr*.jar,WEB-INF/lib/ju*.jar,WEB-INF/lib/jy*.jar,WEB-INF/lib/red5-*.jar,WEB-INF/lib/q*.jar,WEB-INF/lib/lo*.jar,WEB-INF/lib/mina*.jar,WEB-INF/lib/s*.jar,WEB-INF/lib/x*.jar</packagingExcludes>
-				</configuration>
+                    <outputDirectory>${server.dir}/webapps</outputDirectory>
+                </configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -162,6 +164,24 @@
 				<version>2.3.7</version>
 				<extensions>true</extensions>
 			</plugin>
+            <!-- Clean plugin-->
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.6.1</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${server.dir}/webapps/${project.name}</directory>
+                           <!-- <directory>${server.dir}/webapps/${project.build.finalName}.war</directory>-->
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+                <goals>
+                    <goal>clean</goal>
+                </goals>
+            </plugin>
+            <!-- end-->
 		</plugins>
 		<resources>
 			<resource>
@@ -363,19 +383,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.red5</groupId>
-			<artifactId>websocket</artifactId>
-			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/lib/websocket-1.0.jar</systemPath>
-		</dependency>
-		<dependency>
-			<groupId>net.minidev</groupId>
-			<artifactId>json-smart</artifactId>
-			<version>2.0-RC3</version>
-			<scope>system</scope>
-			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/json-smart-2.0-RC3.jar</systemPath>
-		</dependency>		
+
 	</dependencies>
 </project>
