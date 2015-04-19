@@ -42,6 +42,9 @@
 		<logback.version>1.0.13</logback.version>
 		<junit.version>4.11</junit.version>
 		<bc.version>1.50</bc.version>
+        <mysql.connector.version>5.1.30</mysql.connector.version>
+        <hibernate.version>4.2.11.Final</hibernate.version>
+        <dbcp.version>1.4</dbcp.version>
        <!-- <server.dir>/Users/pk/Documents/projects/GoldenBrideChat/server</server.dir>-->
 	</properties>
 	<build>
@@ -295,6 +298,7 @@
 				<type>pom</type>
 			</dependency>
 			<dependency>
+                <!-- Spring 4 dependencies -->
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-beans</artifactId>
 				<version>${spring.version}</version>
@@ -346,6 +350,38 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
+            <!-- ORM integration, e.g Hibernate -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+            <!-- database pool -->
+            <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>${dbcp.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+            <!-- MySql Driver -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.connector.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
+            <!-- Hibernate ORM -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate.version}</version>
+                <type>jar</type>
+                <scope>compile</scope>
+            </dependency>
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
@@ -403,6 +439,35 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 		</dependency>
+        <!-- ORM integration, e.g Hibernate -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <!-- database pool -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${dbcp.version}</version>
+
+        </dependency>
+        <!-- MySql Driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.version}</version>
+
+        </dependency>
+        <!-- Hibernate ORM -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+
+        </dependency>
 
 	</dependencies>
 </project>
