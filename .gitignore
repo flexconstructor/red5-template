@@ -17,3 +17,5 @@ log/
 .settings
 .idea
 dev.properties
+src/main/resources/jdbc.properties
+Red5Template.iml
