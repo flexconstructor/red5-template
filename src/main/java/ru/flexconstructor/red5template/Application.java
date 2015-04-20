@@ -5,8 +5,10 @@ import org.red5.server.adapter.MultiThreadedApplicationAdapter;
 import org.red5.server.api.scope.IScope;
 import org.slf4j.Logger;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * Main application entry point for the chat application.
@@ -16,9 +18,11 @@ import org.springframework.context.ApplicationContextAware;
 public class Application extends MultiThreadedApplicationAdapter implements ApplicationContextAware {
 
     private static Logger log = Red5LoggerFactory.getLogger(Application.class, "chat");
-
+    private UserDetailsService userDetailsService;
     @SuppressWarnings("unused")
     private ApplicationContext applicationContext;
+
+
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -39,4 +43,12 @@ public class Application extends MultiThreadedApplicationAdapter implements Appl
         super.appStop(scope);
     }
 
+    @Required
+    public UserDetailsService getUserDetailsService() {
+        return userDetailsService;
+    }
+
+    public void setUserDetailsService(UserDetailsService userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
 }

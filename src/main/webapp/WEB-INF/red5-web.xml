@@ -52,12 +52,12 @@
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <!--<property name="mappingResources">
+        <property name="mappingResources">
             <list>
                 <value>orm/Users.hbm.xml</value>
                 <value>orm/UserRoles.hbm.xml</value>
             </list>
-        </property>-->
+        </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">
@@ -69,6 +69,17 @@
         </property>
     </bean>
 
+    <bean id="userDao" class="ru.flexconstructor.red5template.dao.UserDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="myUserDetailsService"
+          class="ru.flexconstructor.red5template.services.MyUserDetailsService">
+        <property name="userDao" ref="userDao" />
+    </bean>
 
-    <bean id="web.handler" class="ru.flexconstructor.red5template.Application"/>
+
+
+    <bean id="web.handler" class="ru.flexconstructor.red5template.Application">
+        <property name="UserDetailsService" ref="myUserDetailsService"/>
+    </bean>
 </beans>
