@@ -5,8 +5,6 @@
        xsi:schemaLocation="
       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
-
-
     <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
@@ -26,8 +24,6 @@
         <property name="contextPath" value="${webapp.contextPath}" />
         <property name="virtualHosts" value="${webapp.virtualHosts}" />
     </bean>
-    <bean id="web.handler" class="ru.flexconstructor.red5template.Application"/>
-
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="packagesToScan" value="ru.flexconstructor.red5template.persistence.model" />
@@ -51,5 +47,5 @@
     </bean>
 
     <bean id="persistenceExceptionTranslationPostProcessor" class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
-
+    <bean id="web.handler" class="ru.flexconstructor.red5template.Application"/>
 </beans>

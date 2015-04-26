@@ -157,7 +157,7 @@
                         WEB-INF/lib/red5-*.jar,
                         WEB-INF/lib/slf4j-*.jar,
                         WEB-INF/lib/xercesImpl-*.jar,
-                        WEB-INF/lib/xml-apis-*.jar,
+                        WEB-INF/lib/xml-apis-*.jar,;
                         WEB-INF/lib/spring-aop-*.jar,
                         WEB-INF/lib/spring-beans-*.jar,
                         WEB-INF/lib/spring-context-*.jar,
