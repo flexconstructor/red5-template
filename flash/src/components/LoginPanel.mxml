@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+  Created by pk on 21.04.15.
+-->
+<s:Panel
+        xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+        xmlns:model="ru.flexconstructor.robotlegs.model.*"
+        width="250" height="200" title="Login:">
+    <fx:Declarations>
+        <model:LoginVO id="login_vo"/>
+    </fx:Declarations>
+    <fx:Binding source="{login_inp.text}" destination="login_vo.login"/>
+    <fx:Binding source="{password_inp.text}" destination="login_vo.password"/>
+    <s:Form>
+        <s:FormItem label="Login:">
+            <s:TextInput prompt="Enter your login" width="140"  id="login_inp"/>
+        </s:FormItem>
+        <s:FormItem label="Password:">
+            <s:TextInput prompt="Enter your password" width="140" id="password_inp"/>
+        </s:FormItem>
+    </s:Form>
+    <s:HGroup width="100%" horizontalAlign="right" bottom="15" right="15">
+        <s:Button label="Submit" click="{this.dispatchEvent(new AppEvent(AppEvent.LOGIN,this.login_vo))}"/>
+    </s:HGroup>
+    <fx:Script><![CDATA[
+        import ru.flexconstructor.robotlegs.events.AppEvent;
+        ]]></fx:Script>
+</s:Panel>

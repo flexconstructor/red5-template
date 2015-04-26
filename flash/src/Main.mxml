@@ -2,11 +2,39 @@
 <s:Application
         xmlns:fx="http://ns.adobe.com/mxml/2009"
         xmlns:s="library://ns.adobe.com/flex/spark"
-        >
+        xmlns:components="components.*"
+        xmlns:rl2="robotlegs.bender.mxml.*"
+        xmlns:mvcs="robotlegs.bender.bundles.mvcs.*"
+        xmlns:app="ru.flexconstructor.robotlegs.*"
+        currentState="connect_state">
     <s:states>
         <s:State name="login"/>
-        <s:State name="loged_in"/>
+        <s:State name="logged_in"/>
         <s:State name="connection"/>
+        <s:State name="connect_state"/>
         <s:State name="error"/>
     </s:states>
+    <fx:Declarations>
+       <rl2:ContextBuilderTag>
+            <mvcs:MVCSBundle/>
+           <app:AppConfig/>
+        </rl2:ContextBuilderTag>
+    </fx:Declarations>
+<components:LoginPanel horizontalCenter="0" verticalCenter="0" excludeFrom="logged_in,connection,connect_state"/>
+
+      <s:Label text="connection..." horizontalCenter="0" verticalCenter="0" includeIn="connection"/>
+
+    <s:Group width="100%" height="100%" includeIn="logged_in">
+        <s:Label text="connected!" fontSize="16" horizontalCenter="0" verticalCenter="0"/>
+        <s:Button  label="disconnect"  horizontalCenter="0" verticalCenter="40"
+                 click="this.dispatchEvent(new AppEvent(AppEvent.DISCONNECT))"/>
+    </s:Group>
+    <s:VGroup horizontalCenter="0" verticalCenter="0" includeIn="connect_state">
+        <s:TextInput id="username_Input" prompt="Enter_username"/>
+    <s:Button label="connect"
+             click="{this.dispatchEvent(new AppEvent(AppEvent.CONNECT,this.username_Input.text))}"/>
+    </s:VGroup>
+    <fx:Script><![CDATA[
+        import ru.flexconstructor.robotlegs.events.AppEvent;
+        ]]></fx:Script>
 </s:Application>

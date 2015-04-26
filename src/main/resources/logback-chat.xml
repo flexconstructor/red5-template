@@ -29,6 +29,8 @@
 		
 	<root>
 		<level value="TRACE" />
+        <level value="DEBUG" />
+        <level value="INFO" />
         <appender-ref ref="chat" />
         <appender-ref ref="CONSOLE" />
 	</root>

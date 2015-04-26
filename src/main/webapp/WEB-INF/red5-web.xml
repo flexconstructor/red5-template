@@ -5,6 +5,7 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
     http://www.springframework.org/schema/lang
@@ -14,7 +15,7 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
     <context:annotation-config />
     <context:component-scan base-package="ru.flexconstructor.red5template.entity" />
     <!-- Enable declarative transaction management via annotations -->
@@ -69,6 +70,11 @@
         </property>
     </bean>
 
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
     <bean id="userDao" class="ru.flexconstructor.red5template.dao.UserDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
@@ -79,7 +85,30 @@
 
 
 
+
+    <!-- <bean id="authHandler" class="ru.flexconstructor.red5template.auth.Red5SpringAuthenticationHandler" />
+     <bean id="aggregatedUserDetailsService" class="ru.flexconstructor.red5template.auth.AggregatedUserDetailsService" />-->
+
+
     <bean id="web.handler" class="ru.flexconstructor.red5template.Application">
         <property name="UserDetailsService" ref="myUserDetailsService"/>
     </bean>
+    <!-- Security -->
+    <!--<security:authentication-manager alias="authManager">
+        <security:authentication-provider>
+            <security:user-service properties="WEB-INF/classes/users.properties" />
+        </security:authentication-provider>
+    </security:authentication-manager>-->
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="find*" read-only="true" />
+            <tx:method name="*" />
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:pointcut id="userServicePointCut"
+                      expression="execution(* ru.flexconstructor.red5template.services.*Service.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="userServicePointCut" />
+    </aop:config>-->
+
 </beans>
