@@ -1,0 +1,1 @@
+package ru.flexconstructor.red5template.persistence.dao;import ru.flexconstructor.red5template.persistence.dao.common.IOperations;import ru.flexconstructor.red5template.persistence.model.Parent;public interface IParentDao extends IOperations<Parent> {    //}
