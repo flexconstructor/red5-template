@@ -162,7 +162,7 @@
                         WEB-INF/lib/stringtemplate-*.jar
                     </packagingExcludes>
 
-                    <outputDirectory>${server.dir}/webapps</outputDirectory>
+                    <!--<outputDirectory>${server.dir}/webapps</outputDirectory>-->
                 </configuration>
 			</plugin>
 			<plugin>
