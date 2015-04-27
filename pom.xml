@@ -166,7 +166,6 @@
                         WEB-INF/lib/spring-web-*.jar,
                         WEB-INF/lib/stringtemplate-*.jar
                     </packagingExcludes>
-
                     <!--<outputDirectory>${server.dir}/webapps</outputDirectory>-->
                 </configuration>
 			</plugin>
